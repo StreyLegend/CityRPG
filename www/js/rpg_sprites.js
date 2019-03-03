@@ -1,5 +1,5 @@
 //=============================================================================
-// rpg_sprites.js v1.5.1
+// rpg_sprites.js v1.2.0
 //=============================================================================
 
 //-----------------------------------------------------------------------------
@@ -843,7 +843,7 @@ Sprite_Actor.prototype.motionSpeed = function() {
 
 Sprite_Actor.prototype.refreshMotion = function() {
     var actor = this._actor;
-    var motionGuard = Sprite_Actor.MOTIONS['guard'];
+	var motionGuard = Sprite_Actor.MOTIONS['guard'];
     if (actor) {
         if (this._motion === motionGuard && !BattleManager.isInputting()) {
                 return;
@@ -1183,7 +1183,6 @@ Sprite_Animation._checker2 = {};
 
 Sprite_Animation.prototype.initialize = function() {
     Sprite.prototype.initialize.call(this);
-    this._reduceArtifacts = true;
     this.initMembers();
 };
 
@@ -1308,7 +1307,7 @@ Sprite_Animation.prototype.loadBitmaps = function() {
 };
 
 Sprite_Animation.prototype.isReady = function() {
-    return this._bitmap1 && this._bitmap1.isReady() && this._bitmap2 && this._bitmap2.isReady();
+    return ImageManager.isReady();
 };
 
 Sprite_Animation.prototype.createSprites = function() {
@@ -1418,18 +1417,14 @@ Sprite_Animation.prototype.updateCellSprite = function(sprite, cell) {
         sprite.setFrame(sx, sy, 192, 192);
         sprite.x = cell[1];
         sprite.y = cell[2];
+        if (this._mirror) {
+            sprite.x *= -1;
+        }
         sprite.rotation = cell[4] * Math.PI / 180;
         sprite.scale.x = cell[3] / 100;
-
-        if(cell[5]){
+        if ((cell[5] && !mirror) || (!cell[5] && mirror)) {
             sprite.scale.x *= -1;
         }
-        if(mirror){
-            sprite.x *= -1;
-            sprite.rotation *= -1;
-            sprite.scale.x *= -1;
-        }
-
         sprite.scale.y = cell[3] / 100;
         sprite.opacity = cell[6];
         sprite.blendMode = cell[7];
@@ -1911,7 +1906,6 @@ Sprite_Picture.prototype.initialize = function(pictureId) {
     Sprite.prototype.initialize.call(this);
     this._pictureId = pictureId;
     this._pictureName = '';
-    this._isPicture = true;
     this.update();
 };
 
@@ -2296,11 +2290,7 @@ Spriteset_Map.prototype.createParallax = function() {
 };
 
 Spriteset_Map.prototype.createTilemap = function() {
-    if (Graphics.isWebGL()) {
-        this._tilemap = new ShaderTilemap();
-    } else {
-        this._tilemap = new Tilemap();
-    }
+    this._tilemap = new Tilemap();
     this._tilemap.tileWidth = $gameMap.tileWidth();
     this._tilemap.tileHeight = $gameMap.tileHeight();
     this._tilemap.setData($gameMap.width(), $gameMap.height(), $gameMap.data());
@@ -2317,12 +2307,8 @@ Spriteset_Map.prototype.loadTileset = function() {
         for (var i = 0; i < tilesetNames.length; i++) {
             this._tilemap.bitmaps[i] = ImageManager.loadTileset(tilesetNames[i]);
         }
-        var newTilesetFlags = $gameMap.tilesetFlags();
-        this._tilemap.refreshTileset();
-        if (!this._tilemap.flags.equals(newTilesetFlags)) {
-            this._tilemap.refresh();
-        }
-        this._tilemap.flags = newTilesetFlags;
+        this._tilemap.flags = $gameMap.tilesetFlags();
+        this._tilemap.refresh();
     }
 };
 

@@ -1,5 +1,5 @@
 //=============================================================================
-// rpg_windows.js v1.5.1
+// rpg_windows.js v1.2.0
 //=============================================================================
 
 //-----------------------------------------------------------------------------
@@ -700,12 +700,6 @@ Window_Base.prototype.canvasToLocalY = function(y) {
         node = node.parent;
     }
     return y;
-};
-
-Window_Base.prototype.reserveFaceImages = function() {
-    $gameParty.members().forEach(function(actor) {
-        ImageManager.reserveFace(actor.faceName());
-    }, this);
 };
 
 //-----------------------------------------------------------------------------
@@ -1705,6 +1699,7 @@ Window_MenuStatus.prototype.initialize = function(x, y) {
     Window_Selectable.prototype.initialize.call(this, x, y, width, height);
     this._formationMode = false;
     this._pendingIndex = -1;
+    this.loadImages();
     this.refresh();
 };
 
@@ -1731,7 +1726,7 @@ Window_MenuStatus.prototype.numVisibleRows = function() {
 
 Window_MenuStatus.prototype.loadImages = function() {
     $gameParty.members().forEach(function(actor) {
-        ImageManager.reserveFace(actor.faceName());
+        ImageManager.loadFace(actor.faceName());
     }, this);
 };
 
@@ -2526,7 +2521,6 @@ Window_Status.prototype.initialize = function() {
     var width = Graphics.boxWidth;
     var height = Graphics.boxHeight;
     Window_Selectable.prototype.initialize.call(this, 0, 0, width, height);
-    this._actor = null;
     this.refresh();
     this.activate();
 };
@@ -3438,7 +3432,7 @@ Window_NameEdit.prototype.initialize = function(actor, maxLength) {
     this._defaultName = this._name;
     this.deactivate();
     this.refresh();
-    ImageManager.reserveFace(actor.faceName());
+    ImageManager.loadFace(actor.faceName());
 };
 
 Window_NameEdit.prototype.windowWidth = function() {
@@ -4257,7 +4251,6 @@ Window_Message.prototype.initialize = function() {
 };
 
 Window_Message.prototype.initMembers = function() {
-    this._imageReservationId = Utils.generateRuntimeId();
     this._background = 0;
     this._positionType = 2;
     this._waitCount = 0;
@@ -4369,7 +4362,7 @@ Window_Message.prototype.updateWait = function() {
 
 Window_Message.prototype.updateLoading = function() {
     if (this._faceBitmap) {
-        if (this._faceBitmap.isReady()) {
+        if (ImageManager.isReady()) {
             this.drawMessageFace();
             this._faceBitmap = null;
             return false;
@@ -4487,12 +4480,11 @@ Window_Message.prototype.newPage = function(textState) {
 };
 
 Window_Message.prototype.loadMessageFace = function() {
-    this._faceBitmap = ImageManager.reserveFace($gameMessage.faceName(), 0, this._imageReservationId);
+    this._faceBitmap = ImageManager.loadFace($gameMessage.faceName());
 };
 
 Window_Message.prototype.drawMessageFace = function() {
     this.drawFace($gameMessage.faceName(), $gameMessage.faceIndex(), 0, 0);
-    ImageManager.releaseReservation(this._imageReservationId);
 };
 
 Window_Message.prototype.newLineX = function() {

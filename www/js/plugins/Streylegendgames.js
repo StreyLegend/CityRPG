@@ -104,10 +104,10 @@
  */
 var Liquidize = Liquidize || {};
 Liquidize.MadeWithMV = {};
-Liquidize.MadeWithMV.Parameters = PluginManager.parameters('MadeWithMv');
+Liquidize.MadeWithMV.Parameters = PluginManager.parameters('StreyLegendGames');
 
-Liquidize.MadeWithMV.ShowMV = JSON.parse(Liquidize.MadeWithMV.Parameters["Show Logo StreyLegendGames"]);
-Liquidize.MadeWithMV.MVImage = String(Liquidize.MadeWithMV.Parameters["Logo StreyLegendGame Image"]);
+Liquidize.MadeWithMV.ShowMV = JSON.parse(Liquidize.MadeWithMV.Parameters["Show Made With MV"]);
+Liquidize.MadeWithMV.MVImage = String(Liquidize.MadeWithMV.Parameters["Made with MV Image"]);
 Liquidize.MadeWithMV.ShowCustom = JSON.parse(Liquidize.MadeWithMV.Parameters["Show Custom Splash"]);
 Liquidize.MadeWithMV.CustomImage = String(Liquidize.MadeWithMV.Parameters["Custom Image"]);
 Liquidize.MadeWithMV.FadeOutTime = Number(Liquidize.MadeWithMV.Parameters["Fade Out Time"]) || 120;
