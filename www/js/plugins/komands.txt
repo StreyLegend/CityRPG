@@ -1,0 +1,39 @@
+this.commandNewGame.bind(this) - новая игра
+
+this.commandContinue.bind(this) - продолжить
+
+this.commandOptions.bind(this) - опции
+
+this.commandItem.bind(this) - предметы
+
+this.nextActor.bind(this) - выбрать следующего героя (pagedown)
+
+this.previousActor.bind(this) - выбрать предыдущего героя (pageup)
+
+this.commandToTitle.bind(this) - внешнее меню
+
+this.commandBuy.bind(this) - меню покупок
+
+this.commandSave.bind(this) - сохранение
+
+this.commandGameEnd.bind(this) - выход из игры
+
+this.popScene.bind(this) - отмена\продолжить
+
+this.commandOptimize.bind(this) - оптимизировать (экипировка)
+
+this.commandSell.bind(this) - меню продаж
+
+this.commandFight.bind(this) - бой
+
+this.commandEscape.bind(this) - убежать
+
+this.commandAttack.bind(this) - атаковать
+
+this.commandPersonal.bind(this) - экипировка
+
+this.commandFormation.bind(this) - список героев
+
+this.commandClear.bind(this) - очистить
+
+SceneManager.push(Scene_Options);
