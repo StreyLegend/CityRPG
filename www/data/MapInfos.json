@@ -27,7 +27,7 @@ null,
 {"id":25,"expanded":false,"name":"Больница","order":27,"parentId":4,"scrollX":1081.3333333333333,"scrollY":1305.3333333333333},
 {"id":26,"expanded":false,"name":"Дом 1 В2","order":21,"parentId":10,"scrollX":832,"scrollY":640},
 {"id":27,"expanded":false,"name":"Банк","order":22,"parentId":16,"scrollX":1092,"scrollY":614.6666666666666},
-{"id":28,"expanded":false,"name":"Проклятая пещера","order":28,"parentId":4,"scrollX":1082.6666666666667,"scrollY":862.6666666666666},
+{"id":28,"expanded":false,"name":"Проклятая пещера","order":28,"parentId":4,"scrollX":1082.6666666666667,"scrollY":1689.3333333333333},
 {"id":29,"expanded":false,"name":"Оружейный магазин","order":12,"parentId":6,"scrollX":1092,"scrollY":614.6666666666666},
-{"id":30,"expanded":false,"name":"Каменная пещера","order":29,"parentId":4,"scrollX":1081.3333333333333,"scrollY":718.6666666666666}
+{"id":30,"expanded":false,"name":"Каменная пещера","order":29,"parentId":4,"scrollX":1081.3333333333333,"scrollY":825.3333333333334}
 ]
