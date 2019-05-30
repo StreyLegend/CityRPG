@@ -1,6 +1,6 @@
 [
 null,
-{"id":1,"battlerName":"Actor1_1","characterIndex":0,"characterName":"Actor1","classId":1,"equips":[0,1,2,3,0],"faceIndex":0,"faceName":"Actor1","traits":[],"initialLevel":1,"maxLevel":50,"name":"Кирилл","nickname":"","note":"","profile":""},
-{"id":2,"battlerName":"Actor1_5","characterIndex":4,"characterName":"Actor1","classId":2,"equips":[2,1,2,5,4],"faceIndex":4,"faceName":"Actor1","traits":[],"initialLevel":1,"maxLevel":99,"name":"Максим","nickname":"","note":"","profile":""},
-{"id":3,"battlerName":"","characterIndex":7,"characterName":"People3","classId":1,"equips":[1,1,2,5,0],"faceIndex":7,"faceName":"People3","traits":[],"initialLevel":1,"maxLevel":99,"name":"Солдат","nickname":"","note":"","profile":""}
+{"id":1,"battlerName":"Actor1_1","characterIndex":0,"characterName":"Actor1","classId":1,"equips":[0,1,2,3,0],"faceIndex":0,"faceName":"Actor1","traits":[],"initialLevel":1,"maxLevel":50,"name":"","nickname":"","note":"","profile":""},
+{"id":2,"battlerName":"Actor1_5","characterIndex":4,"characterName":"Actor1","classId":2,"equips":[2,1,2,5,4],"faceIndex":4,"faceName":"Actor1","traits":[],"initialLevel":1,"maxLevel":99,"name":"Эдвард","nickname":"","note":"","profile":""},
+{"id":3,"battlerName":"","characterIndex":7,"characterName":"People3","classId":1,"equips":[6,1,2,5,0],"faceIndex":7,"faceName":"People3","traits":[],"initialLevel":1,"maxLevel":99,"name":"Солдат","nickname":"","note":"","profile":""}
 ]
